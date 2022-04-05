@@ -97,13 +97,14 @@ export class SolvingRunner {
                         <p>${unknownNode[0]}</p></br>
                         <p>${unknownNode[2]} = ${result}</p></br>
                     `)
+                    MathJax.typesetPromise([answerArea])
                 })
             }
             else {
                 let nodeComponentSolving = lastNodes[0]
                 this.setNodeComponentSolving(answerArea, nodeComponentSolving)
+                MathJax.typesetPromise([answerArea])
             }
-            answerArea.style.height = "300px"
             // console.log(lastNodes)
             // console.log(allNodes)
         })
@@ -114,6 +115,9 @@ export class SolvingRunner {
             <p>${nodeComponentSolving[1][0]}</p></br>
             <p>${nodeComponentSolving[0][1]} = ${nodeComponentSolving[0][0]}</p></br>
         `)
+    }
+    getMathJAXstring(string) {
+        return "`" + string + "`"
     }
     findUnknownNode(dataName, lastNodes) {
         let nodeToFind 
