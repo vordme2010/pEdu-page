@@ -93,16 +93,18 @@ export class SolvingRunner {
                     })
                     let result = nerdamer.solveEquations(unknownNode[0], unknownNode[2])[0].toString()
                     answerArea.insertAdjacentHTML("beforeend", `
-                        <p>${unknownNode[1]}</p></br>
-                        <p>${unknownNode[0]}</p></br>
-                        <p>${unknownNode[2]} = ${result}</p></br>
+                        <p>${this.getMathJAXstring(unknownNode[1])}</p></br>
+                        <p>${this.getMathJAXstring(unknownNode[0])}</p></br>
+                        <p>${this.getMathJAXstring(unknownNode[2])} = ${this.getMathJAXstring(result)}</p></br>
                     `)
+                    // console.log(MathJax)
                     MathJax.typesetPromise([answerArea])
                 })
             }
             else {
                 let nodeComponentSolving = lastNodes[0]
                 this.setNodeComponentSolving(answerArea, nodeComponentSolving)
+                // console.log(MathJax)
                 MathJax.typesetPromise([answerArea])
             }
             // console.log(lastNodes)
@@ -111,9 +113,9 @@ export class SolvingRunner {
     }
     setNodeComponentSolving(answerArea, nodeComponentSolving) {
         answerArea.insertAdjacentHTML("beforeend", `
-            <p>${nodeComponentSolving[1][1]}</p></br>
-            <p>${nodeComponentSolving[1][0]}</p></br>
-            <p>${nodeComponentSolving[0][1]} = ${nodeComponentSolving[0][0]}</p></br>
+            <p>${this.getMathJAXstring(nodeComponentSolving[1][1])}</p></br>
+            <p>${this.getMathJAXstring(nodeComponentSolving[1][0])}</p></br>
+            <p>${this.getMathJAXstring(nodeComponentSolving[0][1])} = ${this.getMathJAXstring(nodeComponentSolving[0][0])}</p></br>
         `)
     }
     getMathJAXstring(string) {
@@ -195,6 +197,7 @@ export class SolvingRunner {
         return shortestMethodInObj
     }
     checkForAngleInObg(item) {
+        console.log("angleExists")
         let angleExists = true
         this.objects.forEach(currentObj=> {
             currentObj.components.forEach(component=> {
