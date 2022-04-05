@@ -107,9 +107,12 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"></script>        
     <script>
+        if (window.confirm("If you click 'OK' you would be redirected to the original project's GitHub repository. Cancel will load this webpage")){
+            window.location.href="https://github.com/vordme2010/pEdu-geometry-solver/tree/early-build-0.0.1-test";
+        };
         MathJax = {
           loader: {load: ['input/asciimath', 'output/chtml']}
-        }
+        };
     </script>
     <script type="module" src="scripts/initialData.js"></script>
     <script src="scripts/layout.js"></script>
